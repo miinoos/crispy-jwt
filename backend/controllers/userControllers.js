@@ -7,8 +7,15 @@ const createToken = (_id) => {
 };
 
 //login controller
-const loginUser = (req, res) => {
-  res.status(200).json({ message: "You are logged in" });
+const loginUser = async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const user = await User.login(email, password); //passing the details to the static function which is created in model.
+    const token = createToken(user._id); //creating a token with the userid
+    res.status(200).json({ email, token });
+  } catch (error) {
+    res.status(200).json({ error: error.message }); //catching an error i.e. like "email already in user"
+  }
 };
 
 //singup controller
