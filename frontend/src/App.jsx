@@ -3,6 +3,7 @@ import { useAuthContext } from "./hooks/useAuthContext";
 
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
+import Secret from "./pages/Secret";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <BrowserRouter>
         <div className="pages">
           <Routes>
+            <Route path="/" element={<Secret />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
           </Routes>
