@@ -1,9 +1,20 @@
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useAuthContext } from "./hooks/useAuthContext";
+
 import Signup from "./pages/Signup";
+import Login from "./pages/Login";
 
 function App() {
   return (
-    <div className="bg-light-pink">
-      <Signup />
+    <div className="App">
+      <BrowserRouter>
+        <div className="pages">
+          <Routes>
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
     </div>
   );
 }

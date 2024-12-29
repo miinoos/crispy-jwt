@@ -1,15 +1,15 @@
 import { useState } from "react";
-import { useSignup } from "../hooks/useSignup";
+import { useLogin } from "../hooks/useLogin";
 
 const Signup = () => {
   const [email, setEmail] = useState(""); //to keep track of the values which is inputed in the form
   const [password, setPassword] = useState("");
-  const { signup, error, isLoading } = useSignup();
+  const { login, isLoading, error } = useLogin();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(email, password);
-    await signup(email, password);
+    await login(email, password);
   };
 
   return (
@@ -18,7 +18,7 @@ const Signup = () => {
         className="signup w-1/4 min-w-[200px]  p-10 rounded-2xl shadow-2xl bg-white"
         onSubmit={handleSubmit}
       >
-        <h1 className="text-5xl text-center my-5">SignUp</h1>
+        <h1 className="text-5xl text-center my-5">Log In</h1>
         <p className="text-center text-sm px-10">
           Hey, Enter the details below to sign up for an account
         </p>
